@@ -13,7 +13,6 @@
     <style>
         :root {
             --primary: #000000;
-            /* Cor de destaque (ajusta para o verde/amarelo do Balance) */
             --bg: #000000;
             --header-bg: #000000;
         }
@@ -43,7 +42,6 @@
 
         .logo-img {
             height: 140px;
-            /* Ajustar conforme o tamanho da logo real */
             width: auto;
             object-fit: contain;
             color: #ccc;
@@ -99,14 +97,12 @@
             gap: 15px;
             padding: 15px;
             height: calc(100vh - 73px);
-            /* Altura total menos o header */
             box-sizing: border-box;
             background: #000;
         }
 
         .map-card {
             flex: 1;
-            /* Garante 50% para cada um */
             display: flex;
             flex-direction: column;
             background: #0a0a0a;
@@ -120,7 +116,6 @@
             flex: 1;
             width: 100%;
             height: calc(100% + 40px);
-            /* Esconde a toolbar do fundo do viewer */
             border: none;
             background: #000;
             transform: scale(1.02);
@@ -132,7 +127,7 @@
 <body>
 
     <header>
-        <img src="assets/newlogobc_white.png" class="logo-img">
+        <img src="newlogobc_white.png" class="logo-img">
         <div class="greeting" id="greeting"></div>
         <div class="header-right">
             <div class="weather" id="weather">--°C</div>
