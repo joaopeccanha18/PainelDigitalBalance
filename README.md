@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/newlogobc_white.png" alt="Balance Fitness Club" width="280">
+  <img src="newlogobc_white.png" alt="Balance Fitness Club" width="280">
 </p>
 
 <h1 align="center">Painel Digital Balance</h1>
