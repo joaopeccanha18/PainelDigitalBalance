@@ -1,129 +1,100 @@
 <p align="center">
-  <img src="newlogobc_white.png" alt="Balance Fitness Club" width="280">
+  <img src="assets/newlogobc_white.png" alt="Balance Fitness Club" width="280">
 </p>
 
 <h1 align="center">Painel Digital Balance</h1>
 
 <p align="center">
-  <strong>Sistema de exibição de mapas de aulas para TV — All Black Design</strong>
+  <strong>Sistema Dinâmico para TV — Mapas de Aulas + Carrossel de Fotos</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
-  <img src="https://img.shields.io/badge/Google%20Apps%20Script-34A853?style=for-the-badge&logo=google&logoColor=white" alt="Google Apps Script">
+  <a href="https://joaopeccanha18.github.io/PainelDigitalBalance/" target="_blank">
+    <img src="https://img.shields.io/badge/Aceder_ao_Painel-000000?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Painel URL">
+  </a>
+  <a href="https://joaopeccanha18.github.io/PainelDigitalBalance/upload.html" target="_blank">
+    <img src="https://img.shields.io/badge/Upload_de_Fotos-212121?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Upload URL">
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Google%20Apps%20Script-34A853?style=flat-square&logo=google&logoColor=white" alt="Google Apps Script">
 </p>
 
 ---
 
 ## 🎯 Sobre o Projeto
 
-O **Painel Digital Balance** é uma aplicação web pensada para ser exibida continuamente num ecrã/TV no ginásio **Balance Fitness Club**, em Verdemilho, Aradas — Aveiro. Mostra os mapas de aulas (Piscina e Ginásio) em tempo real, com um design premium totalmente escuro.
+O **Painel Digital Balance** é uma aplicação web autônoma pensada para ser exibida continuamente num ecrã/TV no ginásio **Balance Fitness Club**. 
+Opera em ciclo contínuo, dividindo o tempo entre a exibição dos **Mapas de Aulas (PDFs)** e um **Carrossel de Fotos** partilhado por colaboradores e alunos.
+
+---
+
+## 🔗 Links de Produção
+
+- 📺 **Painel para TV:** [joaopeccanha18.github.io/PainelDigitalBalance](https://joaopeccanha18.github.io/PainelDigitalBalance/)
+- 📱 **Enviar Fotos (Mobile):** [joaopeccanha18.github.io/PainelDigitalBalance/upload.html](https://joaopeccanha18.github.io/PainelDigitalBalance/upload.html)
 
 ---
 
 ## ✨ Funcionalidades
 
-| Funcionalidade | Descrição |
-|---|---|
-| 🗓️ **Mapas de Aulas** | Exibe 2 mapas lado a lado (Piscina + Aulas em Grupo) em formato PDF |
-| 🌤️ **Previsão do Tempo** | Temperatura em tempo real para Verdemilho, Aradas (via [Open-Meteo](https://open-meteo.com/)) |
-| 🕐 **Relógio Digital** | Hora em tempo real, atualizada a cada segundo |
-| 👋 **Saudação Dinâmica** | Exibe "Bom Dia", "Boa Tarde" ou "Boa Noite" conforme o horário |
-| 🔄 **Auto-Refresh** | Relógio (1s), Meteorologia (30min), Mapas PDF (24h) |
-| 📄 **Google Drive** | PDFs são servidos diretamente do Google Drive via Google Apps Script |
+### 📺 Painel Principal (TV)
+* **Auto-Cycling:** Alterna automaticamente entre Modo Mapas (5 min) e Modo Carrossel de Fotos.
+* **Modo Mapas:** Exibe 2 mapas de aulas (Piscina + Ginásio) oriundos do Google Drive.
+* **Modo Carrossel:** Exibe dinamicamente fotos divididas em 3 categorias organizadas: *Staff*, *Aulas em Grupo*, e *Espaço Balance*.
+* **Header Inteligente:** Meteorologia em tempo real (Open-Meteo), Relógio dinâmico e Saudação automática conforme a hora do dia.
+
+### 📱 Upload de Fotos (Mobile)
+* **Progressive Web App Style:** Interface otimizada para telemóveis.
+* **Captura:** Tirar foto diretamente da câmara ou escolher da galeria.
+* **Otimização:** Compressão local das imagens (max. 1200px) antes do upload para poupar largura de banda.
+* **Upload Direto:** As fotos vão diretamente do telemóvel para as pastas específicas no Google Drive da instituição.
 
 ---
 
-## 🖥️ Layout
+## 🛠️ Arquitetura Google Workspace
 
-```
-┌──────────────────────────────────────────────────────────┐
-│  🏋️ LOGO          Boa Tarde          ⛅ 17°C │ 16:58  │
-├────────────────────────────┬─────────────────────────────┤
-│                            │                             │
-│     MAPA PISCINA (PDF)     │    AULAS EM GRUPO (PDF)     │
-│                            │                             │
-│                            │                             │
-│                            │                             │
-└────────────────────────────┴─────────────────────────────┘
-```
+A aplicação funciona "serverless", utilizando o Google Drive como base de dados e CDN:
 
----
-
-## 🛠️ Tecnologias
-
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
-- **Fontes**: [Montserrat](https://fonts.google.com/specimen/Montserrat), [Inter](https://fonts.google.com/specimen/Inter), Iosevka Charon Mono (local)
-- **API Meteorologia**: [Open-Meteo](https://open-meteo.com/) (gratuita, sem chave API)
-- **Backend**: Google Apps Script → retorna JSON com links dos PDFs
-- **Armazenamento**: Google Drive (PDFs dos mapas de aulas)
+1. **Mapas de Aulas (`MapsCode.gs`)**: 
+   Busca o PDF mais recente das pastas "Piscina" e "Aulas em Grupo".
+2. **Galeria de Fotos (`Code.gs`)**: 
+   - **GET**: Devolve as fotos aprovadas das pastas *Staff*, *Aulas em Grupo* e *Espaço Balance*.
+   - **POST**: Recebe as imagens do telemóvel via `upload.html` e guarda-as diretamente na pasta respetiva.
 
 ---
 
 ## 📁 Estrutura do Projeto
 
-```
-paineldigitalbalance/
-├── assets/
-│   └── newlogobc_white.png    # Logo do Balance
-├── index.html                 # Aplicação principal
-└── README.md                  # Este ficheiro
+```text
+PainelDigitalBalance/
+├── index.html                 # Painel principal para a TV
+├── upload.html                # App mobile para envio de fotos
+├── CONFIGURACAO.txt           # Guia de setup do Google Drive
+├── css/
+│   └── style.css              # Estilos UI (Dark Theme Premium)
+├── js/
+│   ├── panel.js               # Lógica de rotação e fetch do painel
+│   └── upload.js              # Lógica de captura e compressão de fotos
+├── apps-script/
+│   ├── MapsCode.gs            # Script do Backend (Mapas)
+│   └── Code.gs                # Script do Backend (Fotos/Upload)
+└── assets/
+    └── newlogobc_white.png    # Logotipo
 ```
 
 ---
 
-## ⚙️ Configuração
+## 🎨 Design System
 
-### 1. API URL
-
-No ficheiro `index.html`, a variável `API_URL` contém o endpoint do Google Apps Script que retorna o JSON com os links dos mapas:
-
-```javascript
-const API_URL = "https://script.google.com/macros/s/.../exec";
-```
-
-### 2. Formato do JSON esperado
-
-O endpoint deve retornar:
-
-```json
-{
-  "piscina": "https://drive.google.com/file/d/FILE_ID/view",
-  "ginasio": "https://drive.google.com/file/d/FILE_ID/view"
-}
-```
-
-### 3. Fonte Local (Opcional)
-
-A saudação usa a fonte **Iosevka Charon Mono**. Para que funcione, esta deve estar instalada no sistema operativo do dispositivo. Caso contrário, é utilizada a fonte **Inter** como fallback.
-
----
-
-## 🕐 Intervalos de Atualização
-
-| Componente | Intervalo |
-|---|---|
-| Relógio | 1 segundo |
-| Meteorologia | 30 minutos |
-| Mapas PDF | 24 horas |
-
----
-
-## 🚀 Como Usar
-
-1. **Abrir o link** do painel no browser da TV em modo ecrã inteiro (`F11`)
-2. ✅ O painel atualiza-se automaticamente — não precisa de interação!
-
----
-
-## 🎨 Design
-
-- **Tema**: All Black Premium (`#000000`)
-- **Cartões**: Fundo `#0a0a0a` com borda sutil `#1f1f1f` e `border-radius: 12px`
-- **Layout**: Flexbox 50/50 para os dois painéis
-- **Tipografia**: Montserrat (geral), Inter (relógio), Iosevka Charon Mono (saudação)
+- **Tema**: All Black Premium (`#0A0A0A` de fundo)
+- **Acentuação**: Cinzas escuros (`#1f1f1f`) para cartões de mapas
+- **Transições**: Fade-ins lentos para não distrair (`transition: opacity 1.2s`)
+- **Acessibilidade**: Indicadores visuais do tempo de vida de cada foto no carrossel.
 
 ---
 
