@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────
 // MAPS SCRIPT — Google Apps Script para os Mapas de Aulas
-// Devolve o PDF mais recente das pastas de Piscina e Ginásio
+// Devolve o ficheiro mais recente das pastas de Piscina e Ginásio
 // ─────────────────────────────────────────────────────────────
-// URL do deploy: https://script.google.com/macros/s/AKfycby3uwcVlcMoZBs_9ZnbJ_v_iLTsehkkafttn8Nc-Y6N49FBPg2JTSqNUDvX5aaP063h/exec
+// URL do deploy (atualizado): https://script.google.com/macros/s/AKfycbz_UDeRCDGfCLC9XTFzaOgRYenBLxADZ5HsNEGKeC_D4FG992BU6y8zvHnDaUN9UBaI/exec
 
 const MAPS_FOLDER_IDS = {
     piscina: '1OuPZTfPQ5M6Rwjya8kI0mtKEroeViUMK',
@@ -11,21 +11,21 @@ const MAPS_FOLDER_IDS = {
 
 // ─────────────────────────────────────────────────────────────
 
-// GET — devolve o URL do PDF mais recente de cada pasta
+// GET — devolve o URL do ficheiro mais recente de cada pasta
 function doGet(e) {
     const result = {};
     for (const [key, folderId] of Object.entries(MAPS_FOLDER_IDS)) {
-        result[key] = getLatestPdfUrl(folderId);
+        result[key] = getLatestFileUrl(folderId);
     }
     return ContentService
         .createTextOutput(JSON.stringify(result))
         .setMimeType(ContentService.MimeType.JSON);
 }
 
-function getLatestPdfUrl(folderId) {
+function getLatestFileUrl(folderId) {
     try {
         const folder  = DriveApp.getFolderById(folderId);
-        const files   = folder.getFilesByType(MimeType.PDF);
+        const files   = folder.getFiles(); // Aceita todos os ficheiros (PDF, JPG, PNG, HEIC)
         let latest    = null;
         let latestDate = null;
 

@@ -31,7 +31,7 @@ PASSO 3 — Criar o script:
   5. Copia o URL do deploy
 
   URL DO SCRIPT DE MAPAS:
-  → _______________________________________________
+  → https://script.google.com/macros/s/AKfycbz_UDeRCDGfCLC9XTFzaOgRYenBLxADZ5HsNEGKeC_D4FG992BU6y8zvHnDaUN9UBaI/exec
 
   Cola em: js/panel.js → MAPS_API_URL
 

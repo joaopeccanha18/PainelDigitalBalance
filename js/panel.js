@@ -2,37 +2,37 @@
 // CONFIGURAÇÃO — preenche os URLs após seguir CONFIGURACAO.txt
 // ─────────────────────────────────────────────────────────────
 const CONFIG = {
-    MAPS_API_URL:   "https://script.google.com/macros/s/AKfycby3uwcVlcMoZBs_9ZnbJ_v_iLTsehkkafttn8Nc-Y6N49FBPg2JTSqNUDvX5aaP063h/exec",
+    MAPS_API_URL:   "https://script.google.com/macros/s/AKfycbz_UDeRCDGfCLC9XTFzaOgRYenBLxADZ5HsNEGKeC_D4FG992BU6y8zvHnDaUN9UBaI/exec",
     PHOTOS_API_URL: "https://script.google.com/macros/s/AKfycbwz9c1ClR3N8W4hiaQLMJhsV3aJjmVfRbA0eAnBTFf7dFxKvZiDW7q2MG3i9WFqTQWevA/exec",
 
-    MAPS_DURATION:                5 * 60 * 1000, // tempo no modo mapas (ms)
-    PHOTO_DURATION:               8000,           // tempo por foto (ms)
+    MAPS_DURATION: 5 * 60 * 1000, // tempo no modo mapas (ms)
+    PHOTO_DURATION: 8000,           // tempo por foto (ms)
     CATEGORY_TRANSITION_DURATION: 2000,           // ecrã de transição entre categorias (ms)
-    PHOTOS_REFRESH_INTERVAL:      10 * 60 * 1000, // refresh das fotos em background (ms)
+    PHOTOS_REFRESH_INTERVAL: 10 * 60 * 1000, // refresh das fotos em background (ms)
 
     CATEGORIES: [
-        { key: 'staff',         label: 'Staff',          icon: '👥' },
-        { key: 'aulasGrupo',    label: 'Aulas em Grupo', icon: '🏋️' },
+        { key: 'staff', label: 'Staff', icon: '👥' },
+        { key: 'aulasGrupo', label: 'Aulas em Grupo', icon: '🏋️' },
         { key: 'espacoBalance', label: 'Espaço Balance', icon: '🌿' },
     ],
 };
 
 // ─────────────────────────────────────────────────────────────
 
-let photosData  = { staff: [], aulasGrupo: [], espacoBalance: [] };
-let modeTimer   = null;
+let photosData = { staff: [], aulasGrupo: [], espacoBalance: [] };
+let modeTimer = null;
 let currentMode = 'maps';
 
-const carouselOverlay     = document.getElementById('carousel-overlay');
-const categoryName        = document.getElementById('category-name');
-const categoryIcon        = document.getElementById('category-icon');
-const categoryDots        = document.getElementById('category-dots');
-const carouselPhotoArea   = document.getElementById('carousel-photo-area');
-const categoryTransition  = document.getElementById('category-transition');
-const transitionIcon      = document.getElementById('transition-icon');
-const transitionLabel     = document.getElementById('transition-label');
-const photoProgressBar    = document.getElementById('photo-progress-bar');
-const cycleBar            = document.getElementById('cycle-bar');
+const carouselOverlay = document.getElementById('carousel-overlay');
+const categoryName = document.getElementById('category-name');
+const categoryIcon = document.getElementById('category-icon');
+const categoryDots = document.getElementById('category-dots');
+const carouselPhotoArea = document.getElementById('carousel-photo-area');
+const categoryTransition = document.getElementById('category-transition');
+const transitionIcon = document.getElementById('transition-icon');
+const transitionLabel = document.getElementById('transition-label');
+const photoProgressBar = document.getElementById('photo-progress-bar');
+const cycleBar = document.getElementById('cycle-bar');
 
 // ─── Utilitários ──────────────────────────────────────────────
 
@@ -75,19 +75,19 @@ function updateClock() {
 
 async function updateWeather() {
     try {
-        const res  = await fetch("https://api.open-meteo.com/v1/forecast?latitude=40.6133&longitude=-8.6472&current_weather=true");
-        const d    = await res.json();
+        const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=40.6133&longitude=-8.6472&current_weather=true");
+        const d = await res.json();
         const temp = Math.round(d.current_weather.temperature);
         const code = d.current_weather.weathercode;
         let icon = '🌡️';
         if (code === 0) icon = '☀️';
-        else if (code >= 1  && code <= 3)  icon = '⛅';
+        else if (code >= 1 && code <= 3) icon = '⛅';
         else if (code >= 45 && code <= 48) icon = '🌫️';
         else if (code >= 51 && code <= 67) icon = '🌧️';
         else if (code >= 71 && code <= 77) icon = '❄️';
         else if (code >= 95 && code <= 99) icon = '⛈️';
         document.getElementById('weather').innerText = `${icon} ${temp}°C`;
-    } catch (e) {}
+    } catch (e) { }
 }
 
 // ─── Fetch Mapas de Aulas ─────────────────────────────────────
@@ -95,9 +95,9 @@ async function updateWeather() {
 async function fetchMaps() {
     try {
         const data = await fetch(CONFIG.MAPS_API_URL).then(r => r.json());
-        const ts   = Date.now();
-        const ip   = document.getElementById('iframe-piscina');
-        const ig   = document.getElementById('iframe-ginasio');
+        const ts = Date.now();
+        const ip = document.getElementById('iframe-piscina');
+        const ig = document.getElementById('iframe-ginasio');
         if (data.piscina && data.piscina.includes('http')) {
             const u = toDrivePreview(data.piscina) + '?v=' + ts;
             if (ip.src !== u) ip.src = u;
@@ -115,8 +115,8 @@ async function fetchPhotos() {
     if (CONFIG.PHOTOS_API_URL.startsWith('COLE')) return;
     try {
         const data = await fetch(CONFIG.PHOTOS_API_URL).then(r => r.json());
-        if (data.staff)         photosData.staff         = data.staff;
-        if (data.aulasGrupo)    photosData.aulasGrupo    = data.aulasGrupo;
+        if (data.staff) photosData.staff = data.staff;
+        if (data.aulasGrupo) photosData.aulasGrupo = data.aulasGrupo;
         if (data.espacoBalance) photosData.espacoBalance = data.espacoBalance;
         setStatus(true);
     } catch (e) {
@@ -168,7 +168,7 @@ async function startCarouselMode() {
 
 function showCategory(catIndex) {
     return new Promise(async resolve => {
-        const cat    = CONFIG.CATEGORIES[catIndex];
+        const cat = CONFIG.CATEGORIES[catIndex];
         const photos = photosData[cat.key] || [];
 
         await showTransition(cat);
@@ -199,7 +199,7 @@ function showCategory(catIndex) {
 
 function showTransition(cat) {
     return new Promise(resolve => {
-        if (transitionIcon)  transitionIcon.textContent  = cat.icon;
+        if (transitionIcon) transitionIcon.textContent = cat.icon;
         if (transitionLabel) transitionLabel.textContent = cat.label;
         categoryTransition.classList.add('show');
         setTimeout(() => {
@@ -217,15 +217,15 @@ function showPhoto(photo) {
         div.className = 'carousel-photo';
 
         const img = document.createElement('img');
-        img.src             = `https://lh3.googleusercontent.com/d/${photo.id}=w1600`;
-        img.alt             = cleanName(photo.name);
-        img.referrerPolicy  = 'no-referrer';
-        img.onerror         = () => {
+        img.src = `https://lh3.googleusercontent.com/d/${photo.id}=w1600`;
+        img.alt = cleanName(photo.name);
+        img.referrerPolicy = 'no-referrer';
+        img.onerror = () => {
             div.innerHTML = '<div class="carousel-empty"><div class="empty-icon">📷</div><div>Foto indisponível</div></div>';
         };
 
         const caption = document.createElement('div');
-        caption.className   = 'photo-caption';
+        caption.className = 'photo-caption';
         caption.textContent = cleanName(photo.name);
 
         div.appendChild(img);
