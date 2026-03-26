@@ -1,0 +1,67 @@
+══════════════════════════════════════════════════════
+   BALANCE — CONFIGURAÇÃO DO PAINEL DIGITAL
+══════════════════════════════════════════════════════
+
+  TÊM DE SER CRIADOS 2 SCRIPTS NO GOOGLE APPS SCRIPT:
+  · Script A → Mapas de Aulas   (apps-script/MapsCode.gs)
+  · Script B → Fotos 3 Categorias (apps-script/Code.gs)
+
+──────────────────────────────────────────────────────
+SCRIPT A — MAPAS DE AULAS
+──────────────────────────────────────────────────────
+
+PASSO 1 — Cria 2 pastas no Google Drive (nova conta):
+  Uma com o PDF do mapa da Piscina
+  Outra com o PDF do mapa de Aulas em Grupo
+
+PASSO 2 — Copia os IDs das pastas:
+  (O ID está no URL: drive.google.com/drive/folders/ ► ID ◄)
+
+  PASTA PDF PISCINA:
+  ID → 1OuPZTfPQ5M6Rwjya8kI0mtKEroeViUMK
+
+  PASTA PDF AULAS EM GRUPO:
+  ID → 17FSfXgBgtXtuzPwNXASKBROaCCT56ph3
+
+PASSO 3 — Criar o script:
+  1. Vai a https://script.google.com → Novo projeto
+  2. Cola o conteúdo de apps-script/MapsCode.gs
+  3. Cola os 2 IDs acima em MAPS_FOLDER_IDS
+  4. Deploy → Web App (Executar como: eu · Acesso: Qualquer um)
+  5. Copia o URL do deploy
+
+  URL DO SCRIPT DE MAPAS:
+  → _______________________________________________
+
+  Cola em: js/panel.js → MAPS_API_URL
+
+──────────────────────────────────────────────────────
+SCRIPT B — FOTOS (Staff / Aulas em Grupo / Espaço Balance)
+──────────────────────────────────────────────────────
+
+PASSO 1 — Cria 3 pastas no Google Drive para as fotos:
+
+  PASTA FOTOS STAFF:
+  ID → 1KDu9D9YRTN8ikJl5aC1SlWnIRcSuSLzF
+
+  PASTA FOTOS AULAS EM GRUPO:
+  ID → 1WVnPSpJMOuF1H9vTXMZQfg0fLUFUTsKA
+
+  PASTA FOTOS ESPAÇO BALANCE:
+  ID → 1U_6E8GrhsCZdM7B0bWPqhFKaSLVArV5c
+
+PASSO 2 — Criar o script:
+  1. Vai a https://script.google.com → Novo projeto
+  2. Cola o conteúdo de apps-script/Code.gs
+  3. Cola os 3 IDs acima em FOLDER_IDS
+  4. Deploy → Web App (Executar como: eu · Acesso: Qualquer um)
+  5. Copia o URL do deploy
+
+  URL DO SCRIPT DE FOTOS:
+  → _______________________________________________
+
+  Cola em:
+  · js/panel.js  → PHOTOS_API_URL
+  · js/upload.js → UPLOAD_API_URL
+
+══════════════════════════════════════════════════════

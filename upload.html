@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="referrer" content="no-referrer">
+    <title>Balance — Enviar Foto</title>
+    <meta name="description" content="Partilha um momento Balance — envia a tua foto para o painel">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Overrides específicos para a página de upload */
+        body { overflow-y: auto; min-height: 100vh; background: #0a0a0a; }
+    </style>
+</head>
+
+<body class="upload-page">
+
+    <div class="upload-container">
+
+        <!-- Logo -->
+        <div class="upload-logo">
+            <img src="assets/newlogobc_white.png" alt="Balance">
+        </div>
+
+        <div class="upload-title">Partilha um momento</div>
+
+        <!-- Formulário de Upload -->
+        <form id="upload-form">
+
+            <!-- Categoria -->
+            <div class="category-label">Escolhe a categoria</div>
+            <div class="category-buttons">
+                <button type="button" class="cat-btn" id="cat-staff">
+                    <span class="cat-icon">👥</span>
+                    Staff
+                </button>
+                <button type="button" class="cat-btn" id="cat-aulasGrupo">
+                    <span class="cat-icon">🏋️</span>
+                    Aulas em Grupo
+                </button>
+                <button type="button" class="cat-btn" id="cat-espacoBalance">
+                    <span class="cat-icon">🌿</span>
+                    Espaço Balance
+                </button>
+            </div>
+
+            <!-- Upload File (hidden) -->
+            <input type="file" id="file-input" accept="image/*" capture="environment" style="display:none">
+
+            <!-- Drop Zone -->
+            <div class="drop-zone" id="drop-zone">
+                <div class="dz-icon">📷</div>
+                <div class="dz-text">Toca para tirar ou escolher foto</div>
+                <div class="dz-hint">JPG, PNG, HEIC · máx. 20 MB</div>
+            </div>
+
+            <!-- Preview -->
+            <div class="image-preview" id="image-preview">
+                <img id="preview-img" src="" alt="Preview">
+                <div class="preview-change-hint">Toca para trocar</div>
+            </div>
+
+            <!-- Nome -->
+            <div class="field-group">
+                <label for="author-name">O teu nome (opcional)</label>
+                <input type="text" id="author-name" placeholder="ex. Maria Ferreira" autocomplete="off" inputmode="text">
+            </div>
+
+            <!-- Botão -->
+            <button type="submit" class="btn-submit" id="btn-submit">ENVIAR FOTO</button>
+
+        </form>
+
+        <!-- Mensagem de Sucesso -->
+        <div class="success-message" id="success-message">
+            <div class="success-icon">🎉</div>
+            <div class="success-title">Foto enviada!</div>
+            <div class="success-sub">O teu momento vai aparecer no painel Balance</div>
+        </div>
+
+    </div>
+
+    <script src="js/upload.js"></script>
+</body>
+
+</html>
